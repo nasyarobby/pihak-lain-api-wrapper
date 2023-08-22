@@ -1,0 +1,11 @@
+FROM node:16.19.0-alpine
+
+WORKDIR /server
+
+COPY ./package.json yarn.lock tsconfig.json* ./
+ADD ./compile.sh ./
+RUN yarn install --production=false
+
+COPY . .
+ADD ./compile.sh ./
+CMD [ "yarn", "dev"]

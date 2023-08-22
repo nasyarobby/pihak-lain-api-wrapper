@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "typeRoots": [
+      "src/@types",
+      "node_modules/@types"
+    ],
+    "rootDir": "src",
+    "outDir": "build",
+    "target": "ES2022",
+    "module": "Es2020",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true ,
+    "moduleResolution": "Node",
+    "sourceMap": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Fastify",
+    "description": "API Description",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root folder",
+        "description": "Get API status",
+        "operationId": "getRoot",
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/cache-time": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root folder",
+        "description": "Get API status",
+        "operationId": "getCache",
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/plain": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root folder",
+        "description": "Get API status",
+        "operationId": "getRootPlain",
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/goods/{id}": {
+      "get": {
+        "operationId": "getGoodById",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/config": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root folder",
+        "description": "Get API status",
+        "operationId": "getConfig",
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/client-error": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root folder",
+        "description": "Get API status",
+        "operationId": "getClientError",
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/server-error": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root folder",
+        "description": "Get API status",
+        "operationId": "getServerError",
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    },
+    "/unknown-error": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root folder",
+        "description": "Get API status",
+        "operationId": "getUnknownError",
+        "responses": {
+          "200": {
+            "description": "Result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataResponse"
+                }
+              }
+            }
+          }
+        },
+        "deprecated": false
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CommonResponse": {
+        "title": "CommonResponse",
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "success",
+              "fail",
+              "error"
+            ],
+            "description": "Response Status",
+            "example": "error"
+          },
+          "code": {
+            "type": "string",
+            "example": "500",
+            "description": "Response Code"
+          },
+          "message": {
+            "maxLength": 255,
+            "type": "string",
+            "description": "Message Text.",
+            "example": "Missing field value"
+          }
+        }
+      },
+      "DataResponse": {
+        "title": "DataResponse",
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/CommonResponse"
+          },
+          {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "additionalProperties": true
+              }
+            }
+          }
+        ]
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
